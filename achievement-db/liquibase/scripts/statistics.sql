@@ -4,5 +4,6 @@
 create table if not exists public.statistics (
     user_id bigint not null,
     action  text   not null,
-    amount  bigint not null
+    amount  bigint not null,
+    constraint pk_statistics primary key (user_id, action)
 );

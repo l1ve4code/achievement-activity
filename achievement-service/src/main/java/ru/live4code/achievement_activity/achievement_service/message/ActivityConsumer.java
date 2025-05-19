@@ -7,6 +7,7 @@ import org.apache.kafka.common.serialization.IntegerDeserializer;
 
 import ru.live4code.achievement_activity.achievement_service.config.ApplicationConfiguration;
 import ru.live4code.achievement_activity.achievement_service.converter.ProtoDeserializer;
+import ru.live4code.achievement_activity.achievement_service.dao.AchievementsDao;
 import ru.live4code.achievement_activity.activity_service.generated.ActivityProtoMessage;
 
 import java.time.Duration;
@@ -33,8 +34,7 @@ public class ActivityConsumer {
         while (true) {
             var records = consumer.poll(Duration.ofMillis(100));
             for (var record : records) {
-                System.out.println(record.value().getUserId());
-                System.out.println(record.value().getAction());
+                AchievementsDao.INSTANCE.upsertUserAction(record.value().getUserId(), record.value().getAction());
             }
         }
     }

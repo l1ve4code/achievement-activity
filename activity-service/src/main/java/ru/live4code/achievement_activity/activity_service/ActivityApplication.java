@@ -47,7 +47,7 @@ public class ActivityApplication {
     }
 
     static class Models {
-        private record UserActivity(@NotNull String userId, @NotNull String action) {
+        private record UserActivity(long userId, @NotNull String action) {
         }
     }
 
