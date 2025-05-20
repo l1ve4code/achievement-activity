@@ -31,11 +31,9 @@ public class ActivityConsumer {
     }
 
     public void consume() {
-        while (true) {
-            var records = consumer.poll(Duration.ofMillis(100));
-            for (var record : records) {
-                AchievementsDao.INSTANCE.upsertUserAction(record.value().getUserId(), record.value().getAction());
-            }
+        var records = consumer.poll(Duration.ofMillis(100));
+        for (var record : records) {
+            AchievementsDao.INSTANCE.upsertUserAction(record.value().getUserId(), record.value().getAction());
         }
     }
 

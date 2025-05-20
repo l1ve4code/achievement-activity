@@ -12,15 +12,13 @@ import ru.live4code.achievement_activity.activity_service.message.ActivityProduc
 public class ActivityApplication {
 
     public static void main(String[] args) {
-        Javalin app = Javalin.create((config) -> {
+        Javalin.create((config) -> {
             config.router.apiBuilder(() -> {
                 ApiBuilder.path("/activity", (() -> {
                     ApiBuilder.post("/save", ActivityApplication.Queries::activitySaveQuery);
                 }));
             });
-        });
-
-        app.start(8080);
+        }).start(8080);
     }
 
     static class Queries {
