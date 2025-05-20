@@ -22,6 +22,21 @@ services:
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
+  activity-application:
+    build: ./activity-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - kafka
+
+  achievements-application:
+    build: ./achievement-service
+    ports:
+      - "8081:8081"
+    depends_on:
+      - postgres
+      - kafka
+
   postgres:
     image: postgres:13.5-alpine
     ports:

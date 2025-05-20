@@ -6,7 +6,7 @@
 
     <groupId>ru.live4code.achievement_activity.achievement_service</groupId>
     <artifactId>achievement-service</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <properties>
         <maven.compiler.source>23</maven.compiler.source>
@@ -88,11 +88,10 @@
             </plugin>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.7.0</version>
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>ru.live4code.achievement_activity.achievement_service.ActivityApplication</mainClass>
+                            <mainClass>ru.live4code.achievement_activity.achievement_service.AchievementApplication</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
@@ -134,10 +133,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
         <resources>
